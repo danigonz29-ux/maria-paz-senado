@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>María Paz Gaviria | Caminantes</title>
+
+    <!-- Tailwind CDN (rápido para MVP). En producción compílalo con Tailwind CLI/Vite. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tipografías fallback (si ya tienes Clash Grotesk/DM Sans en assets, reemplaza estas) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      // Ajusta aquí colores de campaña (puedes reemplazar con los exactos del toolkit)
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              campaignRed: "#E10600",
+              campaignYellow: "#FFD400",
+              campaignLilac: "#C77DFF",
+              ink: "#111111",
+            },
+            fontFamily: {
+              // Plan A: Clash Grotesk (si la cargas localmente), si no cae a system.
+              display: ["Clash Grotesk", "ui-sans-serif", "system-ui"],
+              body: ["DM Sans", "ui-sans-serif", "system-ui"],
+            },
+            boxShadow: {
+              card: "0 10px 30px rgba(0,0,0,0.12)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Si tienes Clash Grotesk local: descomenta y apunta a tu archivo */
+      /* @font-face {
+        font-family: "Clash Grotesk";
+        src: url("./assets/fonts/ClashGrotesk-Variable.woff2") format("woff2");
+        font-weight: 200 700;
+        font-display: swap;
+      } */
+
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+
+  <body class="font-body text-white bg-campaignRed">
+    <!-- Top bar -->
+    <header class="sticky top-0 z-50 bg-campaignRed/95 backdrop-blur border-b border-white/10">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="flex items-center justify-between py-4">
+          <a href="#inicio" class="flex items-center gap-3">
+            <div class="h-9 w-9 bg-campaignYellow text-campaignRed grid place-items-center font-display font-black">
+              MP
+            </div>
+            <div class="leading-tight">
+              <div class="font-display font-black tracking-wide">MARÍA PAZ</div>
+              <div class="text-xs text-white/80 -mt-1">Caminantes</div>
+            </div>
+          </a>
+
+          <nav class="hidden md:flex items-center gap-6 text-sm">
+            <a class="hover:text-campaignYellow transition" href="#camino">El Camino</a>
+            <a class="hover:text-campaignYellow transition" href="#unete">Únete</a>
+            <a class="hover:text-campaignYellow transition" href="#como-votar">Cómo votar</a>
+            <a class="hover:text-campaignYellow transition" href="#agenda">Agenda</a>
+            <a class="hover:text-campaignYellow transition" href="#kit">Prensa / Kit</a>
+          </nav>
+
+          <a
+            href="#unete"
+            class="inline-flex items-center gap-2 bg-campaignYellow text-campaignRed font-display font-black uppercase px-4 py-2"
+          >
+            Únete
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                fill-rule="evenodd"
+                d="M10.293 15.707a1 1 0 010-1.414L13.586 11H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <main id="inicio">
+      <section class="relative">
+        <div class="mx-auto max-w-6xl px-4 py-14 md:py-20">
+          <div class="grid md:grid-cols-12 gap-10 items-center">
+            <!-- Copy -->
+            <div class="md:col-span-7">
+              <p class="text-white/80 tracking-wide">Campaña al Senado</p>
+              <h1 class="mt-3 font-display font-black uppercase leading-[0.92] text-5xl md:text-7xl">
+                Únete a<br />
+                <span class="text-campaignYellow">Caminantes</span><br />
+                con <span class="inline-block">María Paz</span>
+              </h1>
+
+              <p class="mt-5 max-w-xl text-white/90 text-lg">
+                El camino es la cultura: la cultura que transforma territorios, une a la gente y construye futuro.
+              </p>
+
+              <div class="mt-7 flex flex-col sm:flex-row gap-3">
+                <a
+                  href="#unete"
+                  class="inline-flex justify-center items-center gap-2 bg-campaignYellow text-campaignRed font-display font-black uppercase px-7 py-4"
+                >
+                  Únete a Caminantes
+                  <span aria-hidden="true">→</span>
+                </a>
+                <a
+                  href="#como-votar"
+                  class="inline-flex justify-center items-center gap-2 border border-white/25 text-white font-display font-black uppercase px-7 py-4 hover:bg-white/10 transition"
+                >
+                  Cómo votar L 100
+                </a>
+              </div>
+
+              <!-- Quick bullets -->
+              <div class="mt-9 grid sm:grid-cols-3 gap-4">
+                <div class="bg-white/10 border border-white/10 p-4">
+                  <div class="font-display font-black uppercase text-campaignYellow">Únete</div>
+                  <p class="text-sm text-white/90 mt-1">Regístrate y recibe el kit digital.</p>
+                </div>
+                <div class="bg-white/10 border border-white/10 p-4">
+                  <div class="font-display font-black uppercase text-campaignYellow">Comparte</div>
+                  <p class="text-sm text-white/90 mt-1">Difunde piezas y convoca a tu gente.</p>
+                </div>
+                <div class="bg-white/10 border border-white/10 p-4">
+                  <div class="font-display font-black uppercase text-campaignYellow">Activa</div>
+                  <p class="text-sm text-white/90 mt-1">Apoya eventos y territorio.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Visual -->
+            <div class="md:col-span-5">
+              <div class="relative">
+                <!-- Lila shape -->
+                <div class="absolute -inset-2 bg-campaignLilac rotate-3"></div>
+
+                <!-- Image frame -->
+                <div class="relative bg-white text-ink p-3 shadow-card">
+                  <div class="aspect-[4/5] bg-neutral-200 overflow-hidden">
+                    <!-- Reemplaza por tu imagen -->
+                    <img
+                      src="./assets/maria-paz.jpg"
+                      alt="María Paz Gaviria"
+                      class="h-full w-full object-cover"
+                      onerror="this.style.display='none'; this.parentElement.classList.add('grid','place-items-center'); this.parentElement.innerHTML='<div class=&quot;text-sm text-neutral-700 p-6 text-center&quot;><b>Coloca tu imagen</b><br/>assets/maria-paz.jpg</div>';"
+                    />
+                  </div>
+
+                  <!-- Badge -->
+                  <div class="absolute -right-3 top-10 bg-campaignYellow text-campaignRed px-4 py-3 font-display font-black uppercase">
+                    Vote<br />
+                    Senado<br />
+                    <span class="text-2xl leading-none">L 100</span>
+                  </div>
+                </div>
+              </div>
+
+              <p class="mt-4 text-xs text-white/70">
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EL CAMINO ES LA CULTURA -->
+      <section id="camino" class="bg-campaignYellow text-campaignRed">
+        <div class="mx-auto max-w-6xl px-4 py-16">
+          <div class="flex items-end justify-between gap-6 flex-wrap">
+            <div>
+              <h2 class="font-display font-black uppercase text-4xl md:text-5xl leading-tight">
+                El camino es la cultura
+              </h2>
+              <p class="mt-2 text-campaignRed/90 max-w-2xl">
+                Un eje para el territorio, la convivencia y la democracia. Súmate a caminarlo.
+              </p>
+            </div>
+            <a
+              href="#unete"
+              class="inline-flex items-center gap-2 bg-campaignRed text-white font-display font-black uppercase px-6 py-3"
+            >
+              Quiero ser caminante →
+            </a>
+          </div>
+
+          <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card -->
+            <div class="bg-white text-ink p-6 shadow-card">
+              <div class="font-display font-black uppercase text-campaignRed">Para la educación</div>
+              <p class="mt-2 text-sm text-neutral-700">
+                Porque la cultura también es aprender, crear y abrir oportunidades.
+              </p>
+            </div>
+            <div class="bg-white text-ink p-6 shadow-card">
+              <div class="font-display font-black uppercase text-campaignRed">Para los territorios</div>
+              <p class="mt-2 text-sm text-neutral-700">
+                Porque lo local es el corazón: barrios, veredas, municipios y ciudades.
+              </p>
+            </div>
+            <div class="bg-white text-ink p-6 shadow-card">
+              <div class="font-display font-black uppercase text-campaignRed">Para la participación</div>
+              <p class="mt-2 text-sm text-neutral-700">
+                Porque la democracia se camina con la gente, con respeto y diálogo.
+              </p>
+            </div>
+            <div class="bg-white text-ink p-6 shadow-card">
+              <div class="font-display font-black uppercase text-campaignRed">Para el futuro</div>
+              <p class="mt-2 text-sm text-neutral-700">
+                Porque la cultura construye convivencia y sentido de país.
+              </p>
+            </div>
+            <div class="bg-white text-ink p-6 shadow-card">
+              <div class="font-display font-black uppercase text-campaignRed">Para la cultura</div>
+              <p class="mt-2 text-sm text-neutral-700">
+                Porque la cultura es identidad, trabajo, creación y bienestar.
+              </p>
+            </div>
+            <div class="bg-white text-ink p-6 shadow-card">
+              <div class="font-display font-black uppercase text-campaignRed">Para la democracia</div>
+              <p class="mt-2 text-sm text-neutral-700">
+                Porque sin cultura cívica no hay acuerdos ni caminos comunes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CÓMO VOTAR -->
+      <section id="como-votar" class="bg-campaignRed">
+        <div class="mx-auto max-w-6xl px-4 py-16">
+          <div class="grid lg:grid-cols-12 gap-10 items-start">
+            <div class="lg:col-span-6">
+              <h2 class="font-display font-black uppercase text-4xl md:text-5xl leading-tight">
+                Así puedes votar
+              </h2>
+              <p class="mt-3 text-white/90 max-w-xl">
+                Una guía simple para que el día de elecciones votes claro y sin dudas.
+              </p>
+
+              <ol class="mt-8 space-y-4">
+                <li class="flex gap-4">
+                  <div class="h-10 w-10 bg-campaignYellow text-campaignRed grid place-items-center font-display font-black">
+                    1
+                  </div>
+                  <div>
+                    <div class="font-display font-black uppercase">Tarjetón del Senado</div>
+                    <p class="text-sm text-white/90 mt-1">
+                      Pide el tarjetón del Senado en tu mesa de votación.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex gap-4">
+                  <div class="h-10 w-10 bg-campaignYellow text-campaignRed grid place-items-center font-display font-black">
+                    2
+                  </div>
+                  <div>
+                    <div class="font-display font-black uppercase">Busca la letra L</div>
+                    <p class="text-sm text-white/90 mt-1">
+                      Ubica la sección correspondiente a la letra <b>L</b>.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex gap-4">
+                  <div class="h-10 w-10 bg-campaignYellow text-campaignRed grid place-items-center font-display font-black">
+                    3
+                  </div>
+                  <div>
+                    <div class="font-display font-black uppercase">Marca el 100</div>
+                    <p class="text-sm text-white/90 mt-1">
+                      Marca con claridad: <b>L 100</b> – María Paz Gaviria.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+
+              <div class="mt-9 flex flex-col sm:flex-row gap-3">
+                <a
+                  href="#unete"
+                  class="inline-flex justify-center items-center gap-2 bg-campaignYellow text-campaignRed font-display font-black uppercase px-7 py-4"
+                >
+                  Únete a Caminantes →
+                </a>
+                <a
+                  href="#kit"
+                  class="inline-flex justify-center items-center gap-2 border border-white/25 text-white font-display font-black uppercase px-7 py-4 hover:bg-white/10 transition"
+                >
+                  Descargar kit
+                </a>
+              </div>
+            </div>
+
+          <div class="lg:col-span-6">
+  <div class="bg-white/10 border border-white/10 p-6">
+    <div class="flex items-center justify-between gap-3">
+      <div class="font-display font-black uppercase text-campaignYellow">
+        Video pedagógico
+      </div>
+      <span class="text-xs text-white/70">Opcional</span>
+    </div>
+
+    <!-- Video MP4 -->
+    <div class="mt-4 aspect-video bg-black/30 border border-white/10 overflow-hidden">
+      <video
+        class="w-full h-full object-cover"
+        controls
+        preload="metadata"
+      >
+        <source src="https://tudominio.com/videos/video-pedagogico.mp4" type="video/mp4">
+        Tu navegador no soporta videos HTML5.
+      </video>
+    </div>
+
+    <p class="mt-4 text-sm text-white/90">
+      Consejo: mantén el mensaje simple y repetible. En campaña gana el que se entiende a la primera.
+    </p>
+  </div>
+</div>
+
+      </section>
+
+      <!-- AGENDA -->
+      <section id="agenda" class="bg-campaignYellow text-ink">
+        <div class="mx-auto max-w-6xl px-4 py-16">
+          <div class="flex items-end justify-between gap-6 flex-wrap">
+            <div>
+              <h2 class="font-display font-black uppercase text-4xl md:text-5xl leading-tight text-campaignRed">
+                Agenda / Territorios
+              </h2>
+              <p class="mt-2 text-neutral-800 max-w-2xl">
+                Próximas activaciones. (En MVP puedes cargar esto manual; luego lo vuelves dinámico.)
+              </p>
+            </div>
+            <a
+              href="#unete"
+              class="inline-flex items-center gap-2 bg-campaignRed text-white font-display font-black uppercase px-6 py-3"
+            >
+              Inscríbete →
+            </a>
+          </div>
+
+          <div class="mt-10 grid md:grid-cols-3 gap-6">
+            <!-- Event card -->
+            <article class="bg-white p-6 shadow-card">
+              <div class="text-xs text-neutral-500">Bogotá • Fecha</div>
+              <h3 class="mt-2 font-display font-black uppercase text-campaignRed">Encuentro cultural</h3>
+              <p class="mt-2 text-sm text-neutral-700">
+                Conversación con comunidades y caminantes sobre cultura y territorio.
+              </p>
+              <div class="mt-4 flex gap-2">
+                <a class="px-4 py-2 bg-campaignRed text-white font-display font-black uppercase text-xs" href="#unete">
+                  Asistir
+                </a>
+                <a
+                  class="px-4 py-2 border border-neutral-200 text-ink font-display font-black uppercase text-xs"
+                  href="#"
+                  onclick="return false;"
+                >
+                  Ver mapa
+                </a>
+              </div>
+            </article>
+
+            <article class="bg-white p-6 shadow-card">
+              <div class="text-xs text-neutral-500">Medellín • Fecha</div>
+              <h3 class="mt-2 font-display font-black uppercase text-campaignRed">Caminata con la gente</h3>
+              <p class="mt-2 text-sm text-neutral-700">
+                Activación territorial para sumar caminantes y fortalecer red.
+              </p>
+              <div class="mt-4 flex gap-2">
+                <a class="px-4 py-2 bg-campaignRed text-white font-display font-black uppercase text-xs" href="#unete">
+                  Asistir
+                </a>
+                <a
+                  class="px-4 py-2 border border-neutral-200 text-ink font-display font-black uppercase text-xs"
+                  href="#"
+                  onclick="return false;"
+                >
+                  Ver mapa
+                </a>
+              </div>
+            </article>
+
+            <article class="bg-white p-6 shadow-card">
+              <div class="text-xs text-neutral-500">Barranquilla • Fecha</div>
+              <h3 class="mt-2 font-display font-black uppercase text-campaignRed">Diálogo ciudadano</h3>
+              <p class="mt-2 text-sm text-neutral-700">
+                Escucha activa y conversación para construir propuestas con cultura.
+              </p>
+              <div class="mt-4 flex gap-2">
+                <a class="px-4 py-2 bg-campaignRed text-white font-display font-black uppercase text-xs" href="#unete">
+                  Asistir
+                </a>
+                <a
+                  class="px-4 py-2 border border-neutral-200 text-ink font-display font-black uppercase text-xs"
+                  href="#"
+                  onclick="return false;"
+                >
+                  Ver mapa
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ÚNETE / FORM -->
+      <section id="unete" class="bg-campaignRed">
+        <div class="mx-auto max-w-6xl px-4 py-16">
+          <div class="grid lg:grid-cols-12 gap-10">
+            <div class="lg:col-span-5">
+              <h2 class="font-display font-black uppercase text-4xl md:text-5xl leading-tight">
+                Únete a Caminantes
+              </h2>
+              <p class="mt-3 text-white/90">
+                Regístrate para recibir el kit digital, enterarte de activaciones y sumarte a la red.
+              </p>
+
+              <div class="mt-8 space-y-4">
+                <div class="bg-white/10 border border-white/10 p-4">
+                  <div class="font-display font-black uppercase text-campaignYellow">Qué hace un caminante</div>
+                  <ul class="mt-2 text-sm text-white/90 list-disc list-inside space-y-1">
+                    <li>Comparte información y piezas.</li>
+                    <li>Apoya eventos y territorio.</li>
+                    <li>Invita a otras personas.</li>
+                    <li>Cuida el mensaje: respeto y cultura cívica.</li>
+                  </ul>
+                </div>
+
+                <a
+                  href="#kit"
+                  class="inline-flex items-center gap-2 border border-white/25 text-white font-display font-black uppercase px-6 py-3 hover:bg-white/10 transition"
+                >
+                  Ver prensa / kit →
+                </a>
+              </div>
+            </div>
+
+            <div class="lg:col-span-7">
+              <div class="bg-white text-ink p-6 md:p-8 shadow-card">
+                <div class="flex items-center justify-between gap-4 flex-wrap">
+                  <div class="font-display font-black uppercase text-campaignRed text-xl">Formulario de inscripción</div>
+                  <div class="text-xs text-neutral-500">* MVP estático (conectar a backend/Forms)</div>
+                </div>
+
+                <form
+                  class="mt-6 grid md:grid-cols-2 gap-4"
+                  onsubmit="handleSubmit(event)"
+                >
+                  <div class="md:col-span-2">
+                    <label class="text-sm font-medium text-neutral-700">Nombre completo</label>
+                    <input
+                      name="name"
+                      required
+                      class="mt-1 w-full border border-neutral-200 px-4 py-3 outline-none focus:border-campaignRed"
+                      placeholder="Tu nombre"
+                      type="text"
+                    />
+                  </div>
+
+                  <div>
+                    <label class="text-sm font-medium text-neutral-700">Celular (WhatsApp)</label>
+                    <input
+                      name="phone"
+                      required
+                      class="mt-1 w-full border border-neutral-200 px-4 py-3 outline-none focus:border-campaignRed"
+                      placeholder="+57 3xx xxx xxxx"
+                      type="tel"
+                    />
+                  </div>
+
+                  <div>
+                    <label class="text-sm font-medium text-neutral-700">Correo</label>
+                    <input
+                      name="email"
+                      required
+                      class="mt-1 w-full border border-neutral-200 px-4 py-3 outline-none focus:border-campaignRed"
+                      placeholder="tucorreo@ejemplo.com"
+                      type="email"
+                    />
+                  </div>
+
+                  <div class="md:col-span-2">
+                    <label class="text-sm font-medium text-neutral-700">Ciudad / Departamento</label>
+                    <input
+                      name="location"
+                      required
+                      class="mt-1 w-full border border-neutral-200 px-4 py-3 outline-none focus:border-campaignRed"
+                      placeholder="Ej: Bogotá, Cundinamarca"
+                      type="text"
+                    />
+                  </div>
+
+                  <div class="md:col-span-2">
+                    <fieldset class="border border-neutral-200 p-4">
+                      <legend class="px-2 text-sm font-medium text-neutral-700">¿Cómo quieres ayudar?</legend>
+                      <div class="mt-2 grid sm:grid-cols-2 gap-2 text-sm text-neutral-700">
+                        <label class="flex items-center gap-2">
+                          <input type="checkbox" name="help" value="redes" class="accent-campaignRed" />
+                          Redes sociales
+                        </label>
+                        <label class="flex items-center gap-2">
+                          <input type="checkbox" name="help" value="eventos" class="accent-campaignRed" />
+                          Eventos
+                        </label>
+                        <label class="flex items-center gap-2">
+                          <input type="checkbox" name="help" value="logistica" class="accent-campaignRed" />
+                          Logística
+                        </label>
+                        <label class="flex items-center gap-2">
+                          <input type="checkbox" name="help" value="difusion" class="accent-campaignRed" />
+                          Difusión
+                        </label>
+                      </div>
+                    </fieldset>
+                  </div>
+
+                  <div class="md:col-span-2">
+                    <label class="flex items-start gap-3 text-sm text-neutral-700">
+                      <input required type="checkbox" class="mt-1 accent-campaignRed" />
+                      <span>
+                        Acepto la <a href="#politica" class="underline text-campaignRed">política de tratamiento de datos</a>.
+                      </span>
+                    </label>
+                  </div>
+
+                  <div class="md:col-span-2 flex flex-col sm:flex-row gap-3 mt-2">
+                    <button
+                      type="submit"
+                      class="inline-flex justify-center items-center gap-2 bg-campaignRed text-white font-display font-black uppercase px-7 py-4 w-full sm:w-auto"
+                    >
+                      Unirme ahora →
+                    </button>
+
+                    <a
+                      class="inline-flex justify-center items-center gap-2 border border-neutral-200 text-ink font-display font-black uppercase px-7 py-4 w-full sm:w-auto"
+                      href="#"
+                      onclick="copyShareText(); return false;"
+                    >
+                      Copiar texto para WhatsApp
+                    </a>
+                  </div>
+
+                  <p id="formStatus" class="md:col-span-2 text-sm text-neutral-600 mt-2 hidden"></p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- KIT / PRENSA -->
+      <section id="kit" class="bg-campaignYellow text-ink">
+        <div class="mx-auto max-w-6xl px-4 py-16">
+          <div class="flex items-end justify-between gap-6 flex-wrap">
+            <div>
+              <h2 class="font-display font-black uppercase text-4xl md:text-5xl leading-tight text-campaignRed">
+                Prensa / Kit
+              </h2>
+              <p class="mt-2 text-neutral-800 max-w-2xl">
+                Descargas para compartir en redes y apoyar la campaña.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-10 grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 shadow-card">
+              <div class="font-display font-black uppercase text-campaignRed">Kit digital</div>
+              <p class="mt-2 text-sm text-neutral-700">
+                Piezas, stickers, material de difusión.
+              </p>
+              <a class="mt-4 inline-flex items-center gap-2 bg-campaignRed text-white font-display font-black uppercase px-5 py-3 text-xs" href="./assets/kit.zip">
+                Descargar →
+              </a>
+            </div>
+
+            <div class="bg-white p-6 shadow-card">
+              <div class="font-display font-black uppercase text-campaignRed">Logo / marca</div>
+              <p class="mt-2 text-sm text-neutral-700">
+                Versiones para impresión y digital.
+              </p>
+              <a class="mt-4 inline-flex items-center gap-2 bg-campaignRed text-white font-display font-black uppercase px-5 py-3 text-xs" href="./assets/logo-pack.zip">
+                Descargar →
+              </a>
+            </div>
+
+            <div class="bg-white p-6 shadow-card">
+              <div class="font-display font-black uppercase text-campaignRed">Pedagogía electoral</div>
+              <p class="mt-2 text-sm text-neutral-700">
+                Piezas y video para explicar “L 100”.
+              </p>
+              <a class="mt-4 inline-flex items-center gap-2 bg-campaignRed text-white font-display font-black uppercase px-5 py-3 text-xs" href="./assets/pedagogia.mp4">
+                Descargar →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- POLÍTICA (ancla simple para MVP) -->
+      <section id="politica" class="bg-campaignRed">
+        <div class="mx-auto max-w-6xl px-4 py-16">
+          <h2 class="font-display font-black uppercase text-3xl md:text-4xl">Política de tratamiento de datos</h2>
+          <p class="mt-3 text-white/90 max-w-3xl">
+            Este es un placeholder. En producción pega aquí la política oficial (Habeas Data) aprobada por el equipo jurídico.
+          </p>
+          <p class="mt-3 text-white/70 text-sm">
+            Recomendación: habilita doble confirmación (email) si van a hacer envíos masivos.
+          </p>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="bg-ink">
+        <div class="mx-auto max-w-6xl px-4 py-10">
+          <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div>
+              <div class="font-display font-black uppercase">María Paz Gaviria</div>
+              <div class="text-xs text-white/70 mt-1">Caminantes • Campaña Senado</div>
+            </div>
+
+            <div class="flex flex-wrap gap-3 text-sm">
+              <a class="text-white/80 hover:text-white" href="#inicio">Inicio</a>
+              <a class="text-white/80 hover:text-white" href="#camino">El Camino</a>
+              <a class="text-white/80 hover:text-white" href="#unete">Únete</a>
+              <a class="text-white/80 hover:text-white" href="#como-votar">Cómo votar</a>
+              <a class="text-white/80 hover:text-white" href="#politica">Datos</a>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-6 border-t border-white/10 text-xs text-white/60">
+            © <span id="year"></span> • Sitio MVP. Optimizar para producción: Tailwind build + compresión de imágenes + backend de formularios.
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      function copyShareText() {
+        const text =
+          "Estoy caminando con María Paz Gaviria. Súmate tú también 👉 " +
+          window.location.href.split("#")[0] +
+          "#unete";
+        navigator.clipboard.writeText(text).then(() => {
+          alert("Texto copiado para WhatsApp.");
+        });
+      }
+
+      // MVP: simula envío. En producción: POST a tu endpoint (n8n, Make, serverless, etc.)
+      function handleSubmit(event) {
+        event.preventDefault();
+        const form = event.target;
+        const status = document.getElementById("formStatus");
+
+        const data = new FormData(form);
+        const helps = [];
+        form.querySelectorAll("input[name='help']:checked").forEach((c) => helps.push(c.value));
+
+        // Aquí podrías hacer fetch() a tu backend
+        // fetch("/api/caminantes", { method: "POST", body: data })
+
+        status.classList.remove("hidden");
+        status.textContent =
+          "¡Registro listo (modo MVP)! Conecta este formulario a tu backend/Sheets/CRM para guardar los datos.";
+
+        // Reset parcial (opcional)
+        form.reset();
+      }
+    </script>
+  </body>
+</html>
